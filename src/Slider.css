@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0 3%;
+    
+}
+
+.page-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.carousel {
+    width: 1650px;
+    max-width: 1650px;
+    height: 70vh;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: 12 span;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: 200ms opacity ease-in-out;
+    transition-delay: 200ms;
+    animation-name: slideMe;
+    margin-left: 0;
+}
+
+.slide[data-active] {
+    opacity: 1;
+}
+
+
+.slide > img {
+    display: block;
+    width: 100%;
+    height: 700px;
+    object-fit:cover;
+    object-position:bottom;
+    padding: 5px;
+
+    margin: 5px;    
+    background-color: rgba(255, 255, 255, 0.157);
+
+}
+
+.carousel-button {
+    position: absolute;
+    z-index: 2;
+    background: none;
+    border: none;
+    font-size: 4rem;
+    top: 50%;
+    transform: translateY(-80%);
+    color: rgba(255, 255, 255, 0.733);
+    cursor: pointer;
+    border-radius: .25rem;
+    padding: 0 .5rem;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.carousel > ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+}
+
+.carousel-button:hover, 
+.carousel-button:focus {
+    color: white;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.carousel-button:focus {
+    outline: 1px solid black;
+}
+
+.carousel-button.prev {
+    left: 1rem;
+}
+
+.carousel-button.next {
+    right: 1rem;
+}
+
+.headBg {
+    background-color: #3b3b3b;
+    width: 100%;
+    height: 100%;
+}
+.slide {
+    list-style: none;
+}

@@ -1,19 +1,24 @@
+import {Link} from 'react-router-dom';
+import milk from './milk.jpg';
+import curd from './curd.jpg';
+import winner from './winners-image01.jpg';
+import './Slider.css';
 
 function HomePage (){
     return(
         <main> 
-            {/* <div className="carousel " data-carousel> 
+            <div className="carousel " data-carousel> 
                 <button className="carousel-button prev cBtnFamily" data-carousel-button="prev"> ⇦ </button>
                 <button className="carousel-button next cBtnFamily" data-carousel-button="next"> ⇨ </button>
                 <ul data-slides> 
                     <li className="slide card" data-active> 
-                        <img src="images/milk.jpg" alt="Milk Glass Slider" /> 
+                        <img src={milk} alt="Milk Glass Slider" /> 
                     </li>
                     <li className="slide card"> 
-                        <img src="images/curd.jpg" alt="Milk Cheese Curds" />
+                        <img src={curd} alt="Milk Cheese Curds" />
                     </li>
                 </ul>
-            </div> */}
+            </div>
 
             <div className="aboutUsSect">
                 <h1 id="aboutUs"> About Us </h1>
@@ -24,7 +29,7 @@ function HomePage (){
                 </div>
             </div>  
 
-            {/* <div className="photoBoothSect">
+            <div className="photoBoothSect">
                 <h1 id="photoBooth"> Photobooth Contest! </h1>
                 <div className="photoBoothContent"> 
                     <p className="photoBoothPara"> 
@@ -35,14 +40,14 @@ function HomePage (){
                 <div className="winnerSect"> 
                     <div className="winnerSect1"> 
                         <h1 id="winnerTitle"> Winner this Week </h1>
-                        <img className="winnerImg" src="images/winners-image01.jpg" />
+                        <img className="winnerImg" src={winner} />
                     </div>
                     <div className="winnerSect2"> 
                         <h2 id="pictureHere"> Want To See Your Picture Here? </h2>
                         <p id="winnerPara"> 
                             Join our photobooth contest by completing the contest <a href="form.html">registration form</a> and then going to the photobooth page. Winners are chosen every week. <br/> This could be you!
                             <br/> 
-                            Read up on the <a href="legal.html">terms and conditions</a> here.
+                            Read up on the <Link to="/legal">terms and conditions</Link> here.
                         </p>
                     </div>
                     <div className="moveToPhotoBoothSect">
@@ -53,7 +58,7 @@ function HomePage (){
                         </button>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </main>
     )
 }
