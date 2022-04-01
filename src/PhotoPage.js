@@ -1,6 +1,6 @@
 function PhotoPage(){
     return (
-        <main>
+        <main className="page-container">
             <h1>Photobooth Page</h1>
         </main>
     )

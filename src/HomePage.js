@@ -1,12 +1,12 @@
 import {Link} from 'react-router-dom';
 import milk from './milk.jpg';
 import curd from './curd.jpg';
-import winner from './winners-image01.jpg';
+import winner from './img/justin-luebke-tmtizwShVRo-unsplash.jpg';
 import './Slider.css';
 
 function HomePage (){
     return(
-        <main> 
+        <main className="page-container"> 
             <div className="carousel " data-carousel> 
                 <button className="carousel-button prev cBtnFamily" data-carousel-button="prev"> ⇦ </button>
                 <button className="carousel-button next cBtnFamily" data-carousel-button="next"> ⇨ </button>
@@ -38,24 +38,24 @@ function HomePage (){
                 </div>
 
                 <div className="winnerSect"> 
+                    <h1 id="winnerTitle"> Winner this Week </h1>
                     <div className="winnerSect1"> 
-                        <h1 id="winnerTitle"> Winner this Week </h1>
                         <img className="winnerImg" src={winner} />
                     </div>
                     <div className="winnerSect2"> 
                         <h2 id="pictureHere"> Want To See Your Picture Here? </h2>
-                        <p id="winnerPara"> 
-                            Join our photobooth contest by completing the contest <a href="form.html">registration form</a> and then going to the photobooth page. Winners are chosen every week. <br/> This could be you!
-                            <br/> 
-                            Read up on the <Link to="/legal">terms and conditions</Link> here.
-                        </p>
+                        <p>Join our photobooth contest by completing the contest <a href="form.html">registration form</a> and then going to the photobooth page. Winners are chosen every week. </p>
+                        <p>This could be you!</p>
+                        <p>Read up on the <Link to="/legal">terms and conditions</Link> here.</p>
                     </div>
                     <div className="moveToPhotoBoothSect">
                         <p id="signInSect"> Already signed up, but don't see your picture here? Submit another photo! Every week is a new opportunity to win!</p>
-                        <button id="goToPhotobooth">
-                            <p id="arrow"> Arrowhere </p>
+                        <Link to="/photobooth" id="goToPhotobooth">
+                            <div id="arrow">
+                                <p>&rarr;</p>
+                            </div>
                             <h2 id="goToPhotoboothBtnText"> Go To Photobooth</h2>
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

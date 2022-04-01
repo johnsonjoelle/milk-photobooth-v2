@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 function FormPage(){
     return (
-        <section>
+        <main className="page-container">
             <aside id="rules1">
                 <h1  id="yourAwesome"> </h1> 
                 <h1 class="formTitle"> Play For A Weekly Chance To Win!</h1> 
@@ -97,7 +97,7 @@ function FormPage(){
                     </section>
                 </form>
             </article>
-        </section>
+        </main>
     )
 }
 

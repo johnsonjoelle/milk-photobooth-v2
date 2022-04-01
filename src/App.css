@@ -5,6 +5,7 @@
 body {
   margin: 0;
   padding: 0 3%;
+  font-family: expo-sans-pro, sans-serif;
 }
 
 .page-container {
@@ -283,25 +284,21 @@ footer {
 }
 
 p {
-
-font-family: expo-sans-pro, sans-serif;
+/* font-family: expo-sans-pro, sans-serif; */
 font-weight: 400;
 font-style: light;
 font-size: 20px;
 }
 
 li {
-  font-family: expo-sans-pro, sans-serif;
+  /* font-family: expo-sans-pro, sans-serif; */
   font-weight: 400;
   font-style: light;
-
 }
-
-
 
 .aboutUsSect {
   width: 100%;
-  grid-column: 12 span;
+  /* grid-column: 12 span; */
 }
 
 #aboutUs {
@@ -313,7 +310,7 @@ li {
 
 .aboutUsPara {
   font-size: 20px;
-  font-family: expo-sans-pro, sans-serif;;
+  /* font-family: expo-sans-pro, sans-serif;; */
   margin-left: 5px;
 }
 
@@ -330,7 +327,7 @@ li {
 
 .photoBoothPara {
   font-size: 20px;
-  font-family: expo-sans-pro, sans-serif;;
+  /* font-family: expo-sans-pro, sans-serif;; */
   margin-left: 5px;
   text-align: center;
 }   
@@ -341,79 +338,63 @@ li {
   width: 100%;
   height: 600px;
   padding: 15px;
-  padding-left: 25px;
+  /* padding-left: 25px; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: max-content 1fr;
+  column-gap: 40px;
 }
 #winnerTitle {
   text-align: left;
-  grid-column: 12 span;
+  grid-column: span 3;
 }
-
 .winnerImg {
-  width: 300px;
-  height: 400px;
-  grid-column: 4;
-  float: left;
-  margin-right: 30px;
+  max-width: 100%;
+  height: auto;
 }
-
 #pictureHere {
   color: #0d4c8e;
-  font-family: expo-sans-pro, sans-serif;;
 }
-
-#winnerPara {
-  float: left;
-  grid-column: 2;
+.winnerSect2 p {
   font-size: 20px;
-  width: 700px;
   line-height: 40px;
-}
-
-.moveToPhotoBoothSect {
-  float: left;
-  grid-column: 4;
-  width: 500px;
-  margin-right: 10px;
 }
 #signInSect {
-  grid-column: 2;
   font-size: 20px;
   line-height: 40px;
 }
-
 #goToPhotobooth {
-  width: 100%;
+  /* width: max-content;
   cursor: pointer;
   border: none;
+  background: transparent; */
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  text-decoration: none;
+  gap: 15px;
 }
-
 #goToPhotoboothBtnText {
   color: #0d4c8e;
   font-family: dry-cowboy;
-  line-height: 190px;
   font-size: 30px;
 }
 #arrow {
-  font-size: 70px;
   color: #0d4c8e;
-  font-weight: 900;
-  border: solid 2px #0d4c8e;
-  border-radius: 170px;
+  border: solid 4px #0d4c8e;
+  border-radius: 40px;
   width: 80px;
-  float: left;
+  height: 80px;
+}
+#arrow p {
   text-align: center;
+  font-size: 60px;
+  font-weight: 900;
+  margin-bottom: 0;
+  margin-top: -12px;
 }
 
-.winnerSect1 {
-  grid-template-columns: 1fr;
-}
-
-.winnerSect2 {
-  grid-template-columns: 1fr;
-}
-
-
-/* ! Legal Page Css */
+/* * Legal Page CSS */
 .legalTextSectCont {
   width: 100%;
   grid-column: 12 span;
@@ -433,18 +414,18 @@ li {
   font-weight: 600;
   font-size: 20px;
   margin-bottom: 10px;
-  font-family: expo-sans-pro, sans-serif;
+  /* font-family: expo-sans-pro, sans-serif; */
 }
 .termContent {
-  font-family: expo-sans-pro, sans-serif;
+  /* font-family: expo-sans-pro, sans-serif; */
   font-size: 16px;
   
 }
 
 /* !Photobooth Page */
-html {
+/* html {
   width: 1890px;
-}
+} */
 .controlsSect{
   padding-bottom: 20px;
   width: 100%;
@@ -488,7 +469,7 @@ html {
 
 .photoBoothTitle {
   color: white;
-  font-family: expo-sans-pro, sans-serif;
+  /* font-family: expo-sans-pro, sans-serif; */
   font-size: 20px;
   margin: 10px;
 }
@@ -502,7 +483,7 @@ html {
   margin: 5px;
   background-color: #f0f0f0;
   text-transform: capitalize;
-  font-family: expo-sans-pro, sans-serif;
+  /* font-family: expo-sans-pro, sans-serif; */
   width: 140px;
   cursor: pointer;
 }
@@ -511,7 +492,7 @@ html {
   margin: 5px;
   background-color: #f0f0f0;
   text-transform: capitalize;
-  font-family: expo-sans-pro, sans-serif;
+  /* font-family: expo-sans-pro, sans-serif; */
   width: 140px;
   cursor: pointer;
 }
@@ -520,7 +501,7 @@ html {
   margin: 5px;
   background-color: #f0f0f0;
   text-transform: capitalize;
-  font-family: expo-sans-pro, sans-serif;
+  /* font-family: expo-sans-pro, sans-serif; */
   width: 140px;
   cursor: pointer;
 }
@@ -528,7 +509,7 @@ html {
   margin-left: 30px;
   width: 160px;
   height: 45px;
-  font-family: expo-sans-pro, sans-serif;
+  /* font-family: expo-sans-pro, sans-serif; */
   font-size: 20px;
   background-color: #fffefe;
   border: solid #707070 3px;

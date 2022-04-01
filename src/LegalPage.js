@@ -1,6 +1,6 @@
 function LegalPage(){
     return(
-        <main> 
+        <main className="page-container"> 
             <div class="legalTextSectCont"> 
                 <h1 id="termsAndCondit">Terms &amp; Conditions</h1>
                 <ul class="termsList"> 
