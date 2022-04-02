@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 function FormPage(){
     return (
-        <main className="page-container">
+        <main className="page-container form-page">
             <aside id="rules1">
                 <h1  id="yourAwesome"> </h1> 
                 <h1 class="formTitle"> Play For A Weekly Chance To Win!</h1> 

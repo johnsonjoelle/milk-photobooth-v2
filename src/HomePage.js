@@ -40,7 +40,7 @@ function HomePage (){
                 <div className="winnerSect"> 
                     <h1 id="winnerTitle"> Winner this Week </h1>
                     <div className="winnerSect1"> 
-                        <img className="winnerImg" src={winner} />
+                        <img className="winnerImg" src={winner} alt="Weekly winner" />
                     </div>
                     <div className="winnerSect2"> 
                         <h2 id="pictureHere"> Want To See Your Picture Here? </h2>
