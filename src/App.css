@@ -75,6 +75,7 @@ header {
   width: 70px;
   height: 40px;
   align-items: flex-end;
+  cursor: pointer;
 }
 .toggle-button .bar {
   height: 10px;

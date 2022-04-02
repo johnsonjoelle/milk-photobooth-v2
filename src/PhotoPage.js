@@ -54,7 +54,7 @@ function PhotoPage(){
                 <div class="strip"></div>
             </div>
     
-            <audio class="snap" src="images/snap.mp3" hidden></audio>
+            {/* <audio class="snap" src="images/snap.mp3" hidden></audio> */}
         </main>
     )
 }
