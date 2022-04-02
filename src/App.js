@@ -10,7 +10,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import logo from './MoonFarms_logo.png';
+import logo from './img/MoonFarms_logo.png';
 
 function App() {
   // const [namer, setName] = useState('');
