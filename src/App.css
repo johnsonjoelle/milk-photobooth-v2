@@ -645,7 +645,7 @@ li {
     font-size: 20px;
   }
   h1{
-    font-size: 20px;
+    font-size: 20px !important;
   }
 
   p{
@@ -658,6 +658,9 @@ li {
 
   #arrow p{
     font-size: 3.5rem !important;
+  }
+  li{
+    font-size: 12px !important;
   }
 
 }
