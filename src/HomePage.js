@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-import milk from './img/milk.jpg';
-import curd from './img/curd.jpg';
+import milk from './img/milk-cropped.jpg';
+import butter from './img/butter-cropped.jpg';
+import yogurt from './img/yogurt-cropped.png';
+import cheese from './img/cheese-cropped.jpg';
 import winner from './img/justin-luebke-tmtizwShVRo-unsplash.jpg';
 import './Slider.css';
 import React from 'react';
@@ -31,7 +33,13 @@ function HomePage() {
                         <img src={milk} alt="Milk Glass Slider" /> 
                     </li>
                     <li className="slide card"> 
-                        <img src={curd} alt="Milk Cheese Curds" />
+                        <img src={cheese} alt="Cheese Slider" />
+                    </li>
+                    <li className="slide card"> 
+                        <img src={butter} alt="Butter Slider" />
+                    </li>
+                    <li className="slide card"> 
+                        <img src={yogurt} alt="Yogurt Slider" />
                     </li>
                 </ul>
             </div>
