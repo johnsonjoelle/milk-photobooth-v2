@@ -37,7 +37,7 @@ function App() {
               <span className="bar"></span>
               <span className="bar"></span>
             </div>
-            <div className={`toggle-nav ${isActive ? "active": ""}`}>
+            <div className={`toggle-nav ${isActive ? "" : "active"}`}>
               <ul className="toggle-nav-menu"> 
                 <li className="nav-item">
                   <Link to="./" className="headerlink nav-link">HOME</Link>

@@ -80,17 +80,17 @@ function FormPage(){
                     </section>
                     <section class="agreements">
                         <input class="checkbox" type="checkbox" id="rulesAndConditions" name="rulesAndConditions" value="" />
-                        <label class="checkbox" for="rulesAndConditions"> I have read and agree to the contest rules. </label>
+                        <label class="checkbox" htmlFor="rulesAndConditions"> I have read and agree to the contest rules. </label>
                         <p id="rules-msg" class="checkError"></p>
                     </section>
                     <section class="agreements">
                         <input class="checkbox" type="checkbox" id="termsAndConditions" name="termsAndConditions" value="" />
-                        <label class="checkbox" for="termsAndConditions"> I have read and agree to the <Link to="/legal">terms and conditions</Link> of this website.</label>
+                        <label class="checkbox" htmlFor="termsAndConditions"> I have read and agree to the <Link to="/legal">terms and conditions</Link> of this website.</label>
                         <p id="terms-msg" class="checkError"></p>
                     </section>
                     <section class="agreements">
                         <input class="checkbox" type="checkbox" id="offersAndConditions" name="offersAndConditions" value="" />
-                        <label class="checkbox" for="offersAndConditions"> I would like to receive offers, promotions and news from Moon Farms. (Optional) </label>
+                        <label class="checkbox" htmlFor="offersAndConditions"> I would like to receive offers, promotions and news from Moon Farms. (Optional) </label>
                     </section>
                     <section id="btn-container">
                         <input type="submit" value="Submit" id="formSubmit" />

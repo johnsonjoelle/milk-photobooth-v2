@@ -10,23 +10,23 @@ function PhotoPage(){
                         <form id="colorRangeHolder">
                             <h2 className="photoBoothTitle">Add Colour Effects To Your Photo!</h2>
                             <fieldset className="rgb">
-                                <label className="colorLabel" for="rmin">Red Min:</label>
+                                <label className="colorLabel" htmlFor="rmin">Red Min:</label>
                                 <input type="range" min="0" max="255" name="rmin" />
-                                <label className="colorLabel" for="rmax">Red Max:</label>
+                                <label className="colorLabel" htmlFor="rmax">Red Max:</label>
                                 <input type="range" min="0" max="255" name="rmax" />
                             </fieldset>
                         
                             <fieldset className="rgb">
-                                <label className="colorLabel" for="gmin">Green Min:</label>
+                                <label className="colorLabel" htmlFor="gmin">Green Min:</label>
                                 <input type="range" min="0" max="255" name="gmin" />
-                                <label className="colorLabel" for="gmax">Green Max:</label>
+                                <label className="colorLabel" htmlFor="gmax">Green Max:</label>
                                 <input type="range" min="0" max="255" name="gmax" />
                             </fieldset>
                         
                             <fieldset className="rgb">
-                                <label className="colorLabel" for="bmin">Blue Min:</label>
+                                <label className="colorLabel" htmlFor="bmin">Blue Min:</label>
                                 <input type="range" min="0" max="255" name="bmin" />
-                                <label className="colorLabel" for="bmax">Blue Max:</label>
+                                <label className="colorLabel" htmlFor="bmax">Blue Max:</label>
                                 <input type="range" min="0" max="255" name="bmax" />
                             </fieldset>
                             <fieldset className="effects">
