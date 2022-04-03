@@ -657,10 +657,15 @@ li {
   }
 
   #arrow p{
-    font-size: 3.5rem !important;
+    font-size: 2.5rem !important;
   }
   li{
     font-size: 12px !important;
+  }
+
+  #arrow{
+    width: 50px;
+    height: 50px;
   }
 
 }
