@@ -1,7 +1,7 @@
 function LegalPage(){
     return(
         <main className="page-container"> 
-            <div class="legalTextSectCont"> 
+            <div className="legalTextSectCont"> 
                 <h1 id="termsAndCondit">Terms &amp; Conditions</h1>
                 <ul class="termsList"> 
                     <li class="termSectTitle"> Contest Period and Sponsor: </li>

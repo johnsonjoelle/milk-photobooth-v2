@@ -20,7 +20,8 @@ body {
 
 /* * HEADER */
 header {
-  height: 210px;
+  max-height: 210px;
+  padding: 15px 0;
   display: grid;
   grid-template-columns: 230px 1fr;
   align-content: center;
@@ -66,9 +67,9 @@ header {
 
 /* * MOBILE NAVIGATION */
 .toggle-button {
-  position: absolute;
+  /* position: absolute;
   top: 100px;
-  right: 3%;
+  right: 3%; */
   display: none;
   flex-direction: column;
   justify-content: space-between;
@@ -453,7 +454,6 @@ li {
   margin: 5px;
   background-color: #f0f0f0;
   text-transform: capitalize;
-  /* font-family: expo-sans-pro, sans-serif; */
   width: 140px;
   cursor: pointer;
 }
@@ -461,7 +461,6 @@ li {
   margin-left: 30px;
   width: 160px;
   height: 45px;
-  /* font-family: expo-sans-pro, sans-serif; */
   font-size: 20px;
   background-color: #fffefe;
   border: solid #707070 3px;
@@ -640,36 +639,45 @@ li {
 
 
 @media(max-width: 550px) {
-  
+  /* Home Page */
   .headerlink{
-    font-size: 20px;
+    font-size: 30px;
   }
   h1{
-    font-size: 20px !important;
+    font-size: 30px !important;
   }
-
   p{
-    font-size: 12px !important;
+    font-size: 16px !important;
+    line-height: normal;
   }
-
+  .winnerSect2 p, #signInSect {
+    line-height: normal;
+  }
   h2{
-    font-size: 20px !important;
+    font-size: 18px !important;
   }
-
-  #arrow p{
-    font-size: 2.5rem !important;
-  }
-  li{
-    font-size: 12px !important;
-  }
-
   #arrow{
     width: 50px;
     height: 50px;
   }
+  #arrow p{
+    font-size: 2.5rem !important;
+  }
 
+  /* Legal Page */
+  #rules1 #yourAwesome {
+    margin-top: 0;
+  }
+  .termContent{
+    font-size: 16px;
+  }
+
+  /* Header */
   .logoSect img{
     width: 150px;
+  }
+  .toggle-nav {
+    top: 105px;
   }
 
 }

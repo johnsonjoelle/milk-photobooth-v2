@@ -23,6 +23,7 @@ function HomePage() {
     return(
         <main className="page-container"> 
             <div className="carousel " data-carousel> 
+                <div id="size-control"><img src={milk} alt="" /></div>
                 <button className="carousel-button prev cBtnFamily" data-carousel-button="prev" onClick={changeSlide}> ⇦ </button>
                 <button className="carousel-button next cBtnFamily" data-carousel-button="next" onClick={changeSlide}> ⇨ </button>
                 <ul data-slides> 

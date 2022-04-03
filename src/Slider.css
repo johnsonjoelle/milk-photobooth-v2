@@ -1,26 +1,22 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
+/* body {
     margin: 0;
     padding: 0 3%;
-    
-}
-
-/* .page-container {
-    margin-left: auto;
-    margin-right: auto;
 } */
 
 .carousel {
-    /* width: 1650px; */
     max-width: 1650px;
-    height: 60vh;
+    height: max-content;
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    /* grid-column: 12 span; */
+}
+
+/* Hidden image to control responsiveness of slider */
+/* Auto sizing image allows height: max-content in .carousel to resize automatically with the page */
+#size-control img {
+    max-width: 100%;
+    height: auto;
+    opacity: 0;
 }
 
 .slide {
@@ -31,7 +27,7 @@ body {
     transition-delay: 200ms;
     animation-name: slideMe;
     margin-left: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .slide[data-active] {
@@ -43,10 +39,9 @@ body {
     display: block;
     max-width: 100%;
     height: auto;
-    object-fit:cover;
-    object-position:bottom;
+    object-fit: cover;
+    object-position:top;
     padding: 5px;
-
     margin: 5px;    
     background-color: rgba(255, 255, 255, 0.157);
 
@@ -108,13 +103,12 @@ body {
     .carousel-button{
         font-size: 2rem;
         margin-left: 0.7rem;
-    
     }
-    .slide{
+    /* .slide{
         height: 200px;
     }
     .carousel{
         height: 20vh;
-    }
+    } */
     
-  }
+}
