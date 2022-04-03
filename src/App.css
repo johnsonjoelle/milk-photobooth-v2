@@ -637,3 +637,29 @@ li {
     grid-column: 1/-1;
   }
 }
+
+
+@media(max-width: 550px) {
+  
+  .headerlink{
+    font-size: 20px;
+  }
+  h1{
+    font-size: 20px;
+  }
+
+  p{
+    font-size: 12px !important;
+  }
+
+  h2{
+    font-size: 20px !important;
+  }
+
+  #arrow p{
+    font-size: 3.5rem !important;
+  }
+
+}
+
+
