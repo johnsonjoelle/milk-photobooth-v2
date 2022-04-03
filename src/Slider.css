@@ -101,3 +101,19 @@ body {
 .slide {
     list-style: none;
 }
+
+@media(max-width: 550px) {
+    /* slider */
+    .carousel-button{
+        font-size: 2rem;
+        margin-left: 0.7rem;
+    
+    }
+    .slide{
+        height: 200px;
+    }
+    .carousel{
+        height: 20vh;
+    }
+    
+  }
