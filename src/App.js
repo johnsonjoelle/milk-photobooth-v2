@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import HomePage from './HomePage';
 import LegalPage from './LegalPage';
 import FormPage from './FormPage';
@@ -15,7 +15,7 @@ import logo from './img/MoonFarms_logo.png';
 function App() {
   // const [namer, setName] = useState('');
 
-  // Menu Toggle function
+  // Menu Toggle function - https://reactgo.com/react-toggle-class/
   const [isActive, setActive] = useState('false');
   const toggleMenu = () => {
     setActive(!isActive);
