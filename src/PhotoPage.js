@@ -127,8 +127,8 @@ function PhotoPage(props){
                         <div className="strip"></div>
                     </section>
                 </div>
-                <article id="formCheck">
-                    <div id="formCheckContent">
+                <article className='modal' id="formCheck">
+                    <div className='modalContent'>
                         <p>You must complete the form to participate in the contest.</p>
                         <input type="button" value="Go To Form" onClick={goToForm} />
                     </div>

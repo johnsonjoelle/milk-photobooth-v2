@@ -1,8 +1,16 @@
 import { useState } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 function FormPage(props){
-    
+    // Function to navigate to photobooth page
+    const navigate = useNavigate();
+    function goToPhotobooth(){
+        navigate('/photobooth');
+    }
+    // Function to display success msg
+    function success() {
+        document.getElementById('successMsg').style.display = "block";
+    }
 
     // Variables
     const yourAwesome = document.getElementById('yourAwesome');
@@ -175,7 +183,7 @@ function FormPage(props){
             }
         }
 
-        //* Check For Secret Pattern
+        //* Check For Secret Pattern 
         if(errorsDetected>0){
             console.log("Correct Your Errors Please"); 
         } else {
@@ -187,13 +195,13 @@ function FormPage(props){
                 console.log("Good Try Silly");
             }
             props.formCompleted(true);
+            success();
         }
     }
 
     return (
         <main className="page-container form-page">
             <aside id="rules1">
-                <h1  id="yourAwesome"> </h1> 
                 <h1 className="formTitle"> Play For A Weekly Chance To Win!</h1> 
                 <div className="rules"> 
                     <ul> 
@@ -286,6 +294,13 @@ function FormPage(props){
                         <input type="submit" value="Submit" id="formSubmit" />
                     </section>
                 </form>
+            </article>
+            <article className="modal" id="successMsg">
+                <div className="modalContent">
+                    <h3 id="yourAwesome"> </h3> 
+                    <p>Success! You are ready to take your photo and enter the contest!</p>
+                    <input type="button" value="Go To PhotoBooth" onClick={goToPhotobooth} />
+                </div>
             </article>
         </main>
     )
