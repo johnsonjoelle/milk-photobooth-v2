@@ -30,7 +30,7 @@ function App() {
       <div className="App">
         <header id="header"> 
           <div className="logoSect">
-            <Link to="/">
+            <Link to="moonmilk/">
               <img id="logo" className="nav-branding" src={logo} alt="Moon Farms" />
             </Link>
           </div> 
@@ -44,7 +44,7 @@ function App() {
             <div className={`toggle-nav ${isActive ? "" : "active"}`}>
               <ul className="toggle-nav-menu"> 
                 <li className="nav-item">
-                  <Link to="./" className="headerlink nav-link">HOME</Link>
+                  <Link to="moonMilk/" className="headerlink nav-link">HOME</Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/legal" className="headerlink nav-link">LEGAL</Link>
@@ -61,7 +61,7 @@ function App() {
             <div className="navbar-links">
               <ul className="nav-menu"> 
                 <li className="nav-item">
-                  <Link to="/" className="headerlink nav-link">HOME</Link>
+                  <Link to="moonMilk/" className="headerlink nav-link">HOME</Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/legal" className="headerlink nav-link">LEGAL</Link>
@@ -78,7 +78,7 @@ function App() {
         </header>
         {/* Routes */}
         <Routes>
-          <Route path="/" element={<HomePage/>} />
+          <Route path="moonMilk/" element={<HomePage/>} />
           <Route path="/legal" element={<LegalPage/>} />
           <Route path="/form" element={<FormPage formCompleted={(form)=>formCompleted(form)}/>} />
           <Route path="/photobooth" element={<PhotoPage isRegistered={isRegistered}/>} />
