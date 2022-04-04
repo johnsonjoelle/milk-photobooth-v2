@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 
-function FormPage(){
+function FormPage(props){
+    
+
     // Variables
     const yourAwesome = document.getElementById('yourAwesome');
-    let consentAge = 16;
+    const consentAge = 16;
 
     // Field Storage
     const [firstName, setFirstName] = useState("");
@@ -60,48 +62,48 @@ function FormPage(){
     // Check Functions
     function hasCharsCheck(dataToCheck){
         let pattern = /^[a-zA-z]+$/;
-        if (pattern.test(dataToCheck.field.value)) {
+        if (pattern.test(dataToCheck.field)) {
             return true; 
         }
         return false;
     }
     function hasPhoneCheck(dataToCheck){
         let pattern = /^[0-9]{3}[-]?[0-9]{3}[-]?[0-9]{4}$/;
-        if (pattern.test(dataToCheck.field.value)) {
+        if (pattern.test(dataToCheck.field)) {
             return true; 
         }
         return false;
     }
     function hasAddressCheck(dataToCheck){
         let pattern = /^[0-9]+\s{1}\D+$/;
-        if (pattern.test(dataToCheck.field.value)) {
+        if (pattern.test(dataToCheck.field)) {
             return true; 
         }
         return false;
     }
     function hasProvinceCheck(dataToCheck){
         let pattern = /^[A-Z]{2}$/;
-        if (pattern.test(dataToCheck.field.value)) {
+        if (pattern.test(dataToCheck.field)) {
             return true; 
         }
         return false;
     }
     function hasPostalCheck(dataToCheck){
         let pattern = /^[A-Z]{1}[0-9]{1}[A-Z]{1}\s{1}[0-9]{1}[A-Z]{1}[0-9]{1}$/;
-        if (pattern.test(dataToCheck.field.value)) {
+        if (pattern.test(dataToCheck.field)) {
             return true; 
         }
         return false;}
     function hasEmailCheck(dataToCheck){
         let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (pattern.test(dataToCheck.field.value)) {
+        if (pattern.test(dataToCheck.field)) {
             return true; 
         }
         return false;
     }
     function hasBirthCheck(dataToCheck){
         let pattern = /^[0-9/]+$/;
-        if (pattern.test(dataToCheck.field.value)) {
+        if (pattern.test(dataToCheck.field)) {
             return true; 
         }
         return false;
@@ -163,7 +165,7 @@ function FormPage(){
 
         // *Check age
         if(hasBirthCheck(fieldsCheck[6])) {
-            if(checkAge(birth.value)===false) {
+            if(checkAge(birth)===false) {
                 guardianFieldsCheck.forEach(inputField => {
                     if(inputField.checker(inputField)===false){
                         inputField.error.innerText = inputField.msg;
@@ -184,6 +186,7 @@ function FormPage(){
             } else {
                 console.log("Good Try Silly");
             }
+            props.formCompleted(true);
         }
     }
 

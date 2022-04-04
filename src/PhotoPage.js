@@ -1,19 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import sticker1 from './img/sticker-1.png';
 import sticker2 from './img/sticker-2.png';
 import sticker3 from './img/sticker-3.png';
 import sticker4 from './img/sticker-4.png';
 import sticker5 from './img/sticker-5.png';
 
-function PhotoPage(){
+function PhotoPage(props){
+    // Function to open and close the instructions panel
     const [isHidden, setHidden] = useState('false');
-    const [effectsHidden, hideEffects] = useState('false');
     function hideInstructions() {
         setHidden(!isHidden);
     }
+    // Function to open and close the colour effects panel
+    const [effectsHidden, hideEffects] = useState('false');
     function hideColorSliders() {
         hideEffects(!effectsHidden);
     }
+    // Function to navigate to the form page
+    const navigate = useNavigate();
+    function goToForm(){
+        navigate('/form');
+    }
+    // Function to tell if user needs to go to the form page
+    function registerCheck(){
+        console.log(props.isRegistered);
+        if (props.isRegistered === true) {
+            console.log("User has completed the form");
+        } else {
+            document.getElementById('formCheck').style.display="block";
+        }
+    }
+    useEffect(() => {
+        registerCheck();
+    });
 
     return (
         <main className="page-container">
@@ -107,6 +127,12 @@ function PhotoPage(){
                         <div className="strip"></div>
                     </section>
                 </div>
+                <article id="formCheck">
+                    <div id="formCheckContent">
+                        <p>You must complete the form to participate in the contest.</p>
+                        <input type="button" value="Go To Form" onClick={goToForm} />
+                    </div>
+                </article>
             </div>
             {/* <audio className="snap" src="images/snap.mp3" hidden></audio> */}
         </main>

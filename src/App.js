@@ -13,7 +13,11 @@ import {
 import logo from './img/MoonFarms_logo.png';
 
 function App() {
-  // const [namer, setName] = useState('');
+  const [isRegistered, setRegistered] = useState('false');
+  const formCompleted = (form) => {
+    setRegistered(form);
+    console.log(isRegistered);
+  }
 
   // Menu Toggle function - https://reactgo.com/react-toggle-class/
   const [isActive, setActive] = useState('false');
@@ -76,8 +80,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/legal" element={<LegalPage/>} />
-          <Route path="/form" element={<FormPage/>} />
-          <Route path="/photobooth" element={<PhotoPage/>} />
+          <Route path="/form" element={<FormPage formCompleted={(form)=>formCompleted(form)}/>} />
+          <Route path="/photobooth" element={<PhotoPage isRegistered={isRegistered}/>} />
         </Routes>
         {/* Footer */}
         <footer>
