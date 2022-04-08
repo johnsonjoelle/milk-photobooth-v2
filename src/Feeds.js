@@ -52,6 +52,7 @@ function Canvas(props) {
                 <div className="playerDiv">
                     <h2 className="photoBoothTitle centerText">Effects Feed</h2>
                     <canvas id="canvas" className="photo"
+                    width="800" height="450"
                     ref={canvasRef} {...rest}></canvas>
                 </div>
             </article>

@@ -7,6 +7,7 @@ import sticker2 from './img/sticker-2.png';
 import sticker3 from './img/sticker-3.png';
 import sticker4 from './img/sticker-4.png';
 import sticker5 from './img/sticker-5.png';
+import shutterAudio from './audio/snap.mp3';
 
 function PhotoPage(props){
     // Function to open and close the instructions panel
@@ -66,7 +67,7 @@ function PhotoPage(props){
     }
 
     // Stickers
-    let scale = 0.5;
+    let scale = 0.4;
     // Creating the stickers for canvas
     let stkr1 = new Image();
     stkr1.src = sticker1;
@@ -170,6 +171,7 @@ function PhotoPage(props){
     //     video.srcObject = testVid;
     //     video.play();
     // }
+    const shutterSound = document.querySelector('.shutter');
     const addPhoto = (ctx) => {
         const width = 800;
         const height = 450;
@@ -178,8 +180,16 @@ function PhotoPage(props){
         //     ctx.canvas.width = width;
         //     ctx.canvas.height = height;
         //     ctx.drawImage(video, 0, 0, width, height);
-        //     photoTaken = true;
+        //     
         // }
+        shutterSound.currentTime = 0;
+        shutterSound.play();
+        photoTaken = true;
+    }
+
+    // Save Canvas as Image
+    function savePhoto() {
+
     }
 
     // Skill Testing Question on Image submit
@@ -323,7 +333,7 @@ function PhotoPage(props){
                     </div>
                 </article>
             </div>
-            {/* <audio className="snap" src="images/snap.mp3" hidden></audio> */}
+            <audio className="shutter" src={shutterAudio} hidden></audio>
         </main>
     )
 }
