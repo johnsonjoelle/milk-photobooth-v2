@@ -41,9 +41,9 @@ function PhotoPage(props){
 
     // Canvas
     // Basic canvas setup from https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
-    const draw = (ctx, text_Pos, imgPositions) => {
+    const draw = (ctx, text_Pos, imgPositions, video) => {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        // Video feed would go here
+        takePhoto(ctx, video);
         addStickers(ctx, imgPositions);
         grabText(ctx, text_Pos);
     }
@@ -154,8 +154,13 @@ function PhotoPage(props){
 
     // Take Photo
     let photoTaken = false;
-    function takePhoto() {
-        // ! Save canvas image
+    const takePhoto = (ctx, pic) => {
+        const width = 800;
+        const height = 450;
+        // let photo = photoRef.current;
+        ctx.canvas.width = width;
+        ctx.canvas.height = height;
+        ctx.drawImage(pic, 0, 0, width, height);
         photoTaken = true;
     }
 
