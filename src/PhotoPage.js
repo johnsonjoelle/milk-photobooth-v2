@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Feeds from './Feeds';
 import { useNavigate } from 'react-router-dom';
+import Feeds from './Feeds';
+// import getPhoto from './getPhoto';
 import sticker1 from './img/sticker-1.png';
 import sticker2 from './img/sticker-2.png';
 import sticker3 from './img/sticker-3.png';
@@ -41,9 +42,10 @@ function PhotoPage(props){
 
     // Canvas
     // Basic canvas setup from https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
-    const draw = (ctx, text_Pos, imgPositions, video) => {
+    // const videoRef = getPhoto();
+    const draw = (ctx, text_Pos, imgPositions) => {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        takePhoto(ctx, video);
+        // addPhoto(ctx);
         addStickers(ctx, imgPositions);
         grabText(ctx, text_Pos);
     }
@@ -154,14 +156,30 @@ function PhotoPage(props){
 
     // Take Photo
     let photoTaken = false;
-    const takePhoto = (ctx, pic) => {
+    // const getVideo = () => {
+    //     // navigator.mediaDevices.getUserMedia({ video: {width: 800, height: 450}})
+    //     // .then(stream => {
+    //     //     let video = videoRef.current;
+    //     //     video.srcObject = stream;
+    //     //     video.play()
+    //     // })
+    //     // .catch(err => {
+    //     //     console.error(err);
+    //     // });
+    //     let video = videoRef.current;
+    //     video.srcObject = testVid;
+    //     video.play();
+    // }
+    const addPhoto = (ctx) => {
         const width = 800;
         const height = 450;
-        // let photo = photoRef.current;
-        ctx.canvas.width = width;
-        ctx.canvas.height = height;
-        ctx.drawImage(pic, 0, 0, width, height);
-        photoTaken = true;
+        // let video = vid;
+        // if (video !== null) {
+        //     ctx.canvas.width = width;
+        //     ctx.canvas.height = height;
+        //     ctx.drawImage(video, 0, 0, width, height);
+        //     photoTaken = true;
+        // }
     }
 
     // Skill Testing Question on Image submit
@@ -269,7 +287,7 @@ function PhotoPage(props){
                 <div className="feedSection">
                     <Feeds draw={draw} />
                     <section className="buttonHolder">
-                        <button id="camButton" onClick={takePhoto}>Take a Picture!</button>
+                        <button id="camButton" onClick={addPhoto}>Take a Picture!</button>
                         <button id="resetButton">Clear Effects</button>
                         <div id="submitHolder">
                         <button id="submitImgButton" onClick={skillTest}>Submit Photo</button>

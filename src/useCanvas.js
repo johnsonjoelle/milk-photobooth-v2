@@ -1,11 +1,15 @@
 import { useRef, useEffect } from 'react';
+// import usePhoto from './usePhoto';
 
 const useCanvas = (draw) => {
     const canvasRef = useRef(null);
+    // const videoRef = useRef(null);
+    // const videoRef = usePhoto()
 
     useEffect(()=>{
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
+        // video = videoRef.current;
         const textPos = [ctx.canvas.width/2, ctx.canvas.height*0.8];
         let text_Pos = textPos;
         const imgPos1 = [ctx.canvas.width*0.7, ctx.canvas.height*0.4];
