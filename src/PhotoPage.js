@@ -37,22 +37,16 @@ function PhotoPage(props){
     });
 
     // Canvas
-    const draw = (ctx, frameCount, text_Pos) => {
+    // Basic canvas setup from https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
+    const draw = (ctx, text_Pos, imgPositions) => {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        ctx.fillStyle ='#000000';
-        ctx.beginPath();
-        ctx.arc(50, 100, 20*Math.sin(frameCount*0.05)**2, 0, 2*Math.PI);
-        ctx.fill()
+        addStickers(ctx, imgPositions);
         grabText(ctx, text_Pos);
     }
-    
     
     // Custom Text
     let text = new Text();
     const [txtInput, setCustomTxt] = useState("");
-
-    // * Canvas Functions
-    // Text
     function grabText(ctx, text_Pos) {
         text.string = txtInput;
         drawText(ctx, text_Pos);
@@ -63,6 +57,95 @@ function PhotoPage(props){
         let txtX = text_Pos[0];
         let txtY = text_Pos[1];
         ctx.fillText(text.string, txtX, txtY);
+    }
+
+    // Stickers
+    let scale = 0.5;
+    // Creating the stickers for canvas
+    let stkr1 = new Image();
+    stkr1.src = sticker1;
+    let stkr2 = new Image();
+    stkr2.src = sticker2;
+    let stkr3 = new Image();
+    stkr3.src = sticker3;
+    let stkr4 = new Image();
+    stkr4.src = sticker4;
+    let stkr5 = new Image();
+    stkr5.src = sticker5;
+    // Setting up the useStates to add and remove the stickers
+    const [img1, setImage1State] = useState(false);
+    const [img2, setImage2State] = useState(false);
+    const [img3, setImage3State] = useState(false);
+    const [img4, setImage4State] = useState(false);
+    const [img5, setImage5State] = useState(false);
+    function setImg1() {
+        setImage1State(!img1);
+    }
+    function setImg2() {
+        setImage2State(!img2);
+    }
+    function setImg3() {
+        setImage3State(!img3);
+    }
+    function setImg4() {
+        setImage4State(!img4);
+    }
+    function setImg5() {
+        setImage5State(!img5);
+    }
+    // Functions to draw each sticker
+    function drawImg1(ctx, imgPositions) {
+        let w = stkr1.width * scale;
+        let h = stkr1.height * scale;
+        let stkrX = imgPositions.img_Pos1[0];
+        let stkrY = imgPositions.img_Pos1[1];
+        if (img1===true) {
+            ctx.drawImage(stkr1, stkrX, stkrY, w, h);
+        }
+    }
+    function drawImg2(ctx, imgPositions) {
+        let w = stkr2.width * scale;
+        let h = stkr2.height * scale;
+        let stkrX = imgPositions.img_Pos2[0];
+        let stkrY = imgPositions.img_Pos2[1];
+        if (img2===true) {
+            ctx.drawImage(stkr2, stkrX, stkrY, w, h);
+        }
+    }
+    function drawImg3(ctx, imgPositions) {
+        let w = stkr3.width * scale;
+        let h = stkr3.height * scale;
+        let stkrX = imgPositions.img_Pos3[0];
+        let stkrY = imgPositions.img_Pos3[1];
+        if (img3===true) {
+            ctx.drawImage(stkr3, stkrX, stkrY, w, h);
+        }
+    }
+    function drawImg4(ctx, imgPositions) {
+        let w = stkr4.width * scale;
+        let h = stkr4.height * scale;
+        let stkrX = imgPositions.img_Pos4[0];
+        let stkrY = imgPositions.img_Pos4[1];
+        if (img4===true) {
+            ctx.drawImage(stkr4, stkrX, stkrY, w, h);
+        }
+    }
+    function drawImg5(ctx, imgPositions) {
+        let w = stkr5.width * scale;
+        let h = stkr5.height * scale;
+        let stkrX = imgPositions.img_Pos5[0];
+        let stkrY = imgPositions.img_Pos5[1];
+        if (img5===true) {
+            ctx.drawImage(stkr5, stkrX, stkrY, w, h);
+        }
+    }
+    // Function that is called by draw which sends values to useCanvas.js
+    function addStickers(ctx, imgPositions) {
+        drawImg1(ctx, imgPositions);
+        drawImg2(ctx, imgPositions);
+        drawImg3(ctx, imgPositions);
+        drawImg4(ctx, imgPositions);
+        drawImg5(ctx, imgPositions);
     }
 
     return (
@@ -118,17 +201,17 @@ function PhotoPage(props){
                             <fieldset className="customText">
                                 <h2 className="photoBoothTitle">Add Text to Your Photo</h2>
                                 <input type="text" id="text-input" placeholder="Add text here" onChange={(e) => setCustomTxt(e.target.value)} />
-                                <input type="button" id="txt-btn" value="Add Text" onClick={grabText} />
+                                {/* <input type="button" id="txt-btn" value="Add Text" onClick={grabText} /> */}
                             </fieldset>
                         </form>
                         <div className="stickerHolder">
                             <h2 className="photoBoothTitle">Select a sticker to add to your photo!</h2>
                             <div id="stickerTray">
-                                <img src={sticker1} alt="daisy crown cow" data-id="sticker1" />
-                                <img src={sticker2} alt="moon farms moon" data-id="sticker2" />
-                                <img src={sticker4} alt="cow with milk" data-id="sticker4" />
-                                <img src={sticker5} alt="cow sleeping on moon" data-id="sticker5" />
-                                <img src={sticker3} alt="moon farms text graphic" data-id="sticker3" />
+                                <img src={sticker1} alt="daisy crown cow" data-id="sticker1" onClick={setImg1} />
+                                <img src={sticker2} alt="moon farms moon" data-id="sticker2" onClick={setImg2} />
+                                <img src={sticker4} alt="cow with milk" data-id="sticker4" onClick={setImg4} />
+                                <img src={sticker5} alt="cow sleeping on moon" data-id="sticker5" onClick={setImg5} />
+                                <img src={sticker3} alt="moon farms text graphic" data-id="sticker3" onClick={setImg3} />
                             </div>
                         </div>
                     </article>

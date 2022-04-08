@@ -3,7 +3,6 @@ import useCanvas from './useCanvas';
 
 function Canvas(props) {
     const {draw, ...rest } = props;
-    // const {text, ...moreConfig} = options;
     const canvasRef = useCanvas(draw);
 
     return(
