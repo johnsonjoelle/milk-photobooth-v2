@@ -537,6 +537,9 @@ fieldset.customText {
   border: solid var(--colour-white) 2px;
   width: 775px;
 }
+#canvas {
+  border: solid 1px var(--colour-black);
+}
 /* Photo Buttons */
 .buttonHolder {
   display: flex;

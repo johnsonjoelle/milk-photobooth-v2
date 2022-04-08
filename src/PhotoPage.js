@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Feeds from './Feeds';
 import { useNavigate } from 'react-router-dom';
 import sticker1 from './img/sticker-1.png';
 import sticker2 from './img/sticker-2.png';
@@ -25,15 +26,44 @@ function PhotoPage(props){
     // Function to tell if user needs to go to the form page
     function registerCheck(){
         console.log(props.isRegistered);
-        if (props.isRegistered === true) {
-            console.log("User has completed the form");
-        } else {
-            document.getElementById('formCheck').style.display="block";
-        }
+        // if (props.isRegistered === true) {
+        //     console.log("User has completed the form");
+        // } else {
+        //     document.getElementById('formCheck').style.display="block";
+        // }
     }
     useEffect(() => {
         registerCheck();
     });
+
+    // Canvas
+    const draw = (ctx, frameCount, text_Pos) => {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.fillStyle ='#000000';
+        ctx.beginPath();
+        ctx.arc(50, 100, 20*Math.sin(frameCount*0.05)**2, 0, 2*Math.PI);
+        ctx.fill()
+        grabText(ctx, text_Pos);
+    }
+    
+    
+    // Custom Text
+    let text = new Text();
+    const [txtInput, setCustomTxt] = useState("");
+
+    // * Canvas Functions
+    // Text
+    function grabText(ctx, text_Pos) {
+        text.string = txtInput;
+        drawText(ctx, text_Pos);
+    }
+    function drawText(ctx, text_Pos) {
+        ctx.font = '28px dry-cowboy';
+        ctx.textAlign = 'center';
+        let txtX = text_Pos[0];
+        let txtY = text_Pos[1];
+        ctx.fillText(text.string, txtX, txtY);
+    }
 
     return (
         <main className="page-container">
@@ -80,14 +110,15 @@ function PhotoPage(props){
                                 <h2 className="photoBoothTitle">Effects Selection</h2>
                                 <div className="effectBtns">
                                     <input type="button" id="redEffect" value="red filter" />
+                                    {/* onClick={setRedFilter} */}
                                     <input type="button" id="splitEffect" value="split filter" />
                                     <input type="button" id="greenScreenEffect" value="green screen" />
                                 </div>
                             </fieldset>
                             <fieldset className="customText">
                                 <h2 className="photoBoothTitle">Add Text to Your Photo</h2>
-                                <input type="text" id="text-input" placeholder="Add text here" />
-                                <input type="button" id="txt-btn" value="Add Text"></input>
+                                <input type="text" id="text-input" placeholder="Add text here" onChange={(e) => setCustomTxt(e.target.value)} />
+                                <input type="button" id="txt-btn" value="Add Text" onClick={grabText} />
                             </fieldset>
                         </form>
                         <div className="stickerHolder">
@@ -103,18 +134,7 @@ function PhotoPage(props){
                     </article>
                 </section>
                 <div className="feedSection">
-                    <section className="photoFeedSect">
-                        <article id="feeds">
-                            <div className="playerDiv">
-                                <h2 className="photoBoothTitle centerText">Camera Feed</h2>
-                                <video className="player"></video>
-                            </div>
-                            <div className="playerDiv">
-                                <h2 className="photoBoothTitle centerText">Effects Feed</h2>
-                                <canvas className="photo"></canvas>
-                            </div>
-                        </article>
-                    </section>
+                    <Feeds draw={draw} />
                     <section className="buttonHolder">
                         <button id="camButton">Take a Picture!</button>
                         <button id="resetButton">Clear Effects</button>
@@ -127,12 +147,12 @@ function PhotoPage(props){
                         <div className="strip"></div>
                     </section>
                 </div>
-                <article className='modal' id="formCheck">
+                {/* <article className='modal' id="formCheck">
                     <div className='modalContent'>
                         <p>You must complete the form to participate in the contest.</p>
                         <input type="button" value="Go To Form" onClick={goToForm} />
                     </div>
-                </article>
+                </article> */}
             </div>
             {/* <audio className="snap" src="images/snap.mp3" hidden></audio> */}
         </main>
