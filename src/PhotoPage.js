@@ -18,10 +18,13 @@ function PhotoPage(props){
     function hideColorSliders() {
         hideEffects(!effectsHidden);
     }
-    // Function to navigate to the form page
+    // Function to navigate to the form or home page
     const navigate = useNavigate();
     function goToForm(){
         navigate('/form');
+    }
+    function goToHome(){
+        navigate('../moonMilk/');
     }
     // Function to tell if user needs to go to the form page
     function registerCheck(){
@@ -40,6 +43,7 @@ function PhotoPage(props){
     // Basic canvas setup from https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
     const draw = (ctx, text_Pos, imgPositions) => {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        // Video feed would go here
         addStickers(ctx, imgPositions);
         grabText(ctx, text_Pos);
     }
@@ -148,6 +152,47 @@ function PhotoPage(props){
         drawImg5(ctx, imgPositions);
     }
 
+    // Take Photo
+    let photoTaken = false;
+    function takePhoto() {
+        // ! Save canvas image
+        photoTaken = true;
+    }
+
+    // Skill Testing Question on Image submit
+    const [skillAnswer, setSkillAnswer] = useState("");
+    const [skillError, setSkillError] = useState("");
+    function skillTest() {
+        if (photoTaken===true) {
+            document.getElementById('skillQuestion').style.display="block";
+        }
+    }
+    function checkAnswer() {
+        if (skillAnswer==="4") {
+            document.getElementById('skillQuestion').style.display="none";
+            setSkillError("");
+            checkWinner();
+        } else {
+            setSkillError("Try Again");
+        }
+    }
+
+    // Function to check if they are a winner
+    const [winnerMsg, changeWinnerMsg] = useState("Sorry, you didn't win.");
+    const [winnerDetail, changeWinnerDetail] = useState("Try again next week!");
+    function checkWinner() {
+        // Everyone has a 2.5% chance to win
+        const winChance = 0.025;
+        let userRoll = Math.random();
+        if (userRoll <= winChance) {
+            changeWinnerMsg("Congrats! You are a winner!");
+            changeWinnerDetail("Your image will be featured on our home page.");
+            // ! Post on home page
+        }
+        document.getElementById('photoSubmissionMsg').style.display = "block";
+    }
+
+
     return (
         <main className="page-container">
             <div className="photoPageContainer">
@@ -219,10 +264,10 @@ function PhotoPage(props){
                 <div className="feedSection">
                     <Feeds draw={draw} />
                     <section className="buttonHolder">
-                        <button id="camButton">Take a Picture!</button>
+                        <button id="camButton" onClick={takePhoto}>Take a Picture!</button>
                         <button id="resetButton">Clear Effects</button>
                         <div id="submitHolder">
-                        <button id="submitImgButton">Submit Photo</button>
+                        <button id="submitImgButton" onClick={skillTest}>Submit Photo</button>
                         </div>
                     </section>
                     <section className="stripHolder"> 
@@ -236,6 +281,24 @@ function PhotoPage(props){
                         <input type="button" value="Go To Form" onClick={goToForm} />
                     </div>
                 </article> */}
+                <article className='modal' id="skillQuestion">
+                    <div className='modalContent'>
+                        <p>Answer the Question to Continue</p>
+                        <label>
+                            What is 2 + 2 = ?
+                            <input type="text" id="skillInput" max="2" onChange={(e) => setSkillAnswer(e.target.value)} />
+                        </label>
+                        <p>{skillError}</p>
+                        <input type="button" value="Continue" onClick={checkAnswer} />
+                    </div>
+                </article>
+                <article className='modal' id="photoSubmissionMsg">
+                    <div className='modalContent'>
+                        <h3>{winnerMsg}</h3>
+                        <p>{winnerDetail}</p>
+                        <input type="button" value="Continue" onClick={goToHome} />
+                    </div>
+                </article>
             </div>
             {/* <audio className="snap" src="images/snap.mp3" hidden></audio> */}
         </main>
