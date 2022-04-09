@@ -40,7 +40,6 @@ function Canvas(props) {
                     <div className="playerDiv">
                         <h2 className="photoBoothTitle centerText">Camera Feed</h2>
                         <video id="camera"className="player"
-                        width="800" height="450" muted loop
                         ref={videoRef}></video>
                     </div>
                     <div className="playerDiv">

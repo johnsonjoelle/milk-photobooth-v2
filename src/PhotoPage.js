@@ -166,11 +166,6 @@ function PhotoPage(props){
     //     setVid(data);
     // }
 
-    const takephoto = (ctx, vid) => {
-        const width = 800;
-        const height = 450;
-        ctx.drawImage(vid, 0, 0, width, height);
-    }
     const takePhoto = () => {
         // addPhoto();
         shutterSound.currentTime = 0;
