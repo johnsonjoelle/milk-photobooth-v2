@@ -1,8 +1,6 @@
 import React from 'react';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import useCanvas from './useCanvas';
-// import usePhoto from './getPhoto';
-// import testVid from './test_Vid/gameplay.mp4';
 
 function Canvas(props) {
     const {draw, ...rest } = props;
@@ -11,34 +9,33 @@ function Canvas(props) {
 
     // ! To Move
     const videoRef = useRef(null);
-    // const photoRef = useRef(null);
-    const [hasPhoto, setHasPhoto] = useState(false);
     const getVideo = () => {
         // Get stream from webcam
         navigator.mediaDevices.getUserMedia({ video: {width: 800, height: 450}})
         .then(stream => {
             let video = videoRef.current;
             video.srcObject = stream;
-            video.play()
+            video.play();
         })
         .catch(err => {
             console.error(err);
         });
-        // ! Remove commented out below (this was for testing)
-        // let video = videoRef.current;
-        // video.src = testVid;
-        // video.play();
     }
     useEffect(() => {
         getVideo();
     }, [videoRef]);
 
-    const takePhoto = () => {
-        const width = 800;
-        const height = 450;
-        let video = videoRef.current;
-
-    }
+    // const[vid, setVideo] = useState();
+    // const takePhoto = () => {
+    //     let video = videoRef.current;
+    //     // setVideo(video);
+    //     // const width = 800;
+    //     // const height = 450;
+    //     // ctx.canvas.width = width;
+    //     //     ctx.canvas.height = height;
+    //     // ctx.drawImage(video, 0, 0, width, height);
+    //     // vid = video;
+    // }
 
     return(
         <section className="photoFeedSect">
@@ -46,7 +43,7 @@ function Canvas(props) {
                 <div className="playerDiv">
                     <h2 className="photoBoothTitle centerText">Camera Feed</h2>
                     <video id="camera"className="player"
-                    // width="800" height="450" autoPlay muted loop
+                    width="800" height="450" muted loop
                     ref={videoRef}></video>
                 </div>
                 <div className="playerDiv">

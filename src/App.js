@@ -11,12 +11,18 @@ import {
   Link
 } from 'react-router-dom';
 import logo from './img/MoonFarms_logo.png';
+import winner from './img/justin-luebke-tmtizwShVRo-unsplash.jpg';
 
 function App() {
   const [isRegistered, setRegistered] = useState('false');
   const formCompleted = (form) => {
     setRegistered(form);
     console.log(isRegistered);
+  }
+  
+  const[winningImg, setImg] = useState(winner)
+  const setWinningImg =(winImg) => {
+    setImg(winImg)
   }
 
   // Menu Toggle function - https://reactgo.com/react-toggle-class/
@@ -78,10 +84,10 @@ function App() {
         </header>
         {/* Routes */}
         <Routes>
-          <Route path="moonMilk/" element={<HomePage/>} />
+          <Route path="moonMilk/" element={<HomePage winningImg={winningImg} />} />
           <Route path="/legal" element={<LegalPage/>} />
           <Route path="/form" element={<FormPage formCompleted={(form)=>formCompleted(form)}/>} />
-          <Route path="/photobooth" element={<PhotoPage isRegistered={isRegistered}/>} />
+          <Route path="/photobooth" element={<PhotoPage isRegistered={isRegistered} setWinningImg={(winningImg)=>setWinningImg(winningImg)} />} />
         </Routes>
         {/* Footer */}
         <footer>

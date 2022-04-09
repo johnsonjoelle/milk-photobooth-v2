@@ -552,49 +552,11 @@ fieldset.customText {
   margin-right: 30px;
   white-space: nowrap;
 }
-#submitHolder {
-  text-align: right;
-  width: 100%;
-}
 #submitImgButton {
   margin-right: 0;
   background-color: var(--colour-gold);
   border: solid #707070 3px;
 }
-
-/* Photo Strip Css */
-.strip {
-  padding: 2rem;
-  background-color: #e7e7e7d8;
-}
-.strip img {
-  width: 230px;
-  overflow-x: scroll;
-  padding: 0.8rem 0.8rem 2.5rem 0.8rem;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-  background: var(--colour-white);
-  margin: 10px;
-}
-
-/* .strip a:nth-child(5n+1) img {
-  transform: rotate(10deg);
-}
-
-.strip a:nth-child(5n+2) img {
-  transform: rotate(-2deg);
-}
-
-.strip a:nth-child(5n+3) img {
-  transform: rotate(8deg);
-}
-
-.strip a:nth-child(5n+4) img {
-  transform: rotate(-11deg);
-}
-
-.strip a:nth-child(5n+5) img {
-  transform: rotate(12deg);
-} */
 
 /* Modals */
 .modal {

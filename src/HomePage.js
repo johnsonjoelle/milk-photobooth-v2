@@ -3,11 +3,9 @@ import milk from './img/milk-cropped.jpg';
 import butter from './img/butter-cropped.jpg';
 import yogurt from './img/yogurt-cropped.png';
 import cheese from './img/cheese-cropped.jpg';
-import winner from './img/justin-luebke-tmtizwShVRo-unsplash.jpg';
 import './Slider.css';
-import React from 'react';
 
-function HomePage() {
+function HomePage(props) {
     function changeSlide(e) {
         const button = e.target;
         const offset = button.dataset.carouselButton === "next" ? 1 : -1
@@ -64,7 +62,7 @@ function HomePage() {
                 <div className="winnerSect"> 
                     <h1 id="winnerTitle"> Winner this Week </h1>
                     <div className="winnerSect1"> 
-                        <img className="winnerImg" src={winner} alt="Weekly winner" />
+                        <img className="winnerImg" src={props.winningImg} alt="Weekly winner" />
                     </div>
                     <div className="winnerSect2"> 
                         <h2 id="pictureHere"> Want To See Your Picture Here? </h2>

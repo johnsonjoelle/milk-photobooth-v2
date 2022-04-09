@@ -15,11 +15,6 @@ function PhotoPage(props){
     function hideInstructions() {
         setHidden(!isHidden);
     }
-    // Function to open and close the colour effects panel
-    const [effectsHidden, hideEffects] = useState('false');
-    function hideColorSliders() {
-        hideEffects(!effectsHidden);
-    }
     // Function to navigate to the form or home page
     const navigate = useNavigate();
     function goToForm(){
@@ -31,11 +26,11 @@ function PhotoPage(props){
     // Function to tell if user needs to go to the form page
     function registerCheck(){
         console.log(props.isRegistered);
-        // if (props.isRegistered === true) {
-        //     console.log("User has completed the form");
-        // } else {
-        //     document.getElementById('formCheck').style.display="block";
-        // }
+        if (props.isRegistered === true) {
+            console.log("User has completed the form");
+        } else {
+            document.getElementById('formCheck').style.display="block";
+        }
     }
     useEffect(() => {
         registerCheck();
@@ -43,12 +38,18 @@ function PhotoPage(props){
 
     // Canvas
     // Basic canvas setup from https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
-    // const videoRef = getPhoto();
     const draw = (ctx, text_Pos, imgPositions) => {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        // addPhoto(ctx);
+        addPhoto();
         addStickers(ctx, imgPositions);
         grabText(ctx, text_Pos);
+        saveCanvas(ctx);
+    }
+    const [canvas, setCanvas] = useState();
+    const [CTX, setCtx] = useState();
+    const saveCanvas = (ctx) => {
+        setCanvas(ctx.canvas);
+        setCtx(ctx);
     }
     
     // Custom Text
@@ -157,39 +158,31 @@ function PhotoPage(props){
 
     // Take Photo
     let photoTaken = false;
-    // const getVideo = () => {
-    //     // navigator.mediaDevices.getUserMedia({ video: {width: 800, height: 450}})
-    //     // .then(stream => {
-    //     //     let video = videoRef.current;
-    //     //     video.srcObject = stream;
-    //     //     video.play()
-    //     // })
-    //     // .catch(err => {
-    //     //     console.error(err);
-    //     // });
-    //     let video = videoRef.current;
-    //     video.srcObject = testVid;
-    //     video.play();
-    // }
     const shutterSound = document.querySelector('.shutter');
-    const addPhoto = (ctx) => {
-        const width = 800;
-        const height = 450;
-        // let video = vid;
-        // if (video !== null) {
-        //     ctx.canvas.width = width;
-        //     ctx.canvas.height = height;
-        //     ctx.drawImage(video, 0, 0, width, height);
-        //     
-        // }
+    const takePhoto = () => {
+        addPhoto();
         shutterSound.currentTime = 0;
         shutterSound.play();
         photoTaken = true;
     }
+    const addPhoto = () => {
+        const width = 800;
+        const height = 450;
+        // Print current frame of video to canvas
+        // let video = vid;
+        //     ctx.canvas.width = width;
+        //     ctx.canvas.height = height;
+        // CTX.drawImage(video, 0, 0, width, height);
+        //     
+        // }
+    }
 
     // Save Canvas as Image
+    const [img, saveImg] = useState();
     function savePhoto() {
-
+        console.log("Saving Photo");
+        const data = canvas.toDataURL('image/jpg');
+        saveImg(data);
     }
 
     // Skill Testing Question on Image submit
@@ -197,6 +190,7 @@ function PhotoPage(props){
     const [skillError, setSkillError] = useState("");
     function skillTest() {
         if (photoTaken===true) {
+            savePhoto();
             document.getElementById('skillQuestion').style.display="block";
         }
     }
@@ -220,7 +214,8 @@ function PhotoPage(props){
         if (userRoll <= winChance) {
             changeWinnerMsg("Congrats! You are a winner!");
             changeWinnerDetail("Your image will be featured on our home page.");
-            // ! Post on home page
+            // Post on home page
+            props.setWinningImg(img);
         }
         document.getElementById('photoSubmissionMsg').style.display = "block";
     }
@@ -234,52 +229,18 @@ function PhotoPage(props){
                         <h2 className="photoBoothTitle">Instructions</h2>
                         <ol className={`instructions-list ${isHidden ? "" : "hidden"}`} >
                             <li>You must have a webcam and give your browser permission to access your webcam in order to use this page.</li>
-                            <li>Use the colour sliders or filter buttons to adjust the colour of your image.</li>
-                            <li>Click on a sticker to add it to your image.</li>
+                            <li>Click on a sticker to add it to, or remove it from, your image.</li>
                             <li>You can add text to your image by typing in the text field and this clicking the "Add Text" button.</li>
                             <li>To take your picture, click the "Take a Picture!" button.</li>
-                            <li>To discard your edits, click the "Clear Effects" button.</li>
                             <li>When you are happy your image, click the "Submit" button to enter it into the contest!</li>
                         </ol>
                         <p className="instructions-hide" onClick={hideInstructions}>{isHidden ? "Hide" : "Show"}</p>
                     </article>
                     <article id="controls">
                         <form id="colorRangeHolder">
-                            <h2 className="photoBoothTitle">Add Colour Effects To Your Photo!</h2>
-                            <p className="effects-hide" onClick={hideColorSliders}>{effectsHidden ? "Hide" : "Show"}</p>
-                            <fieldset className={`rgb ${effectsHidden ? "" : "hidden"}`}>
-                                <label className="colorLabel" htmlFor="rmin">Red Min:</label>
-                                <input type="range" min="0" max="255" name="rmin" />
-                                <label className="colorLabel" htmlFor="rmax">Red Max:</label>
-                                <input type="range" min="0" max="255" name="rmax" />
-                            </fieldset>
-                        
-                            <fieldset className={`rgb ${effectsHidden ? "" : "hidden"}`}>
-                                <label className="colorLabel" htmlFor="gmin">Green Min:</label>
-                                <input type="range" min="0" max="255" name="gmin" />
-                                <label className="colorLabel" htmlFor="gmax">Green Max:</label>
-                                <input type="range" min="0" max="255" name="gmax" />
-                            </fieldset>
-                        
-                            <fieldset className={`rgb ${effectsHidden ? "" : "hidden"}`}>
-                                <label className="colorLabel" htmlFor="bmin">Blue Min:</label>
-                                <input type="range" min="0" max="255" name="bmin" />
-                                <label className="colorLabel" htmlFor="bmax">Blue Max:</label>
-                                <input type="range" min="0" max="255" name="bmax" />
-                            </fieldset>
-                            <fieldset className="effects">
-                                <h2 className="photoBoothTitle">Effects Selection</h2>
-                                <div className="effectBtns">
-                                    <input type="button" id="redEffect" value="red filter" />
-                                    {/* onClick={setRedFilter} */}
-                                    <input type="button" id="splitEffect" value="split filter" />
-                                    <input type="button" id="greenScreenEffect" value="green screen" />
-                                </div>
-                            </fieldset>
                             <fieldset className="customText">
                                 <h2 className="photoBoothTitle">Add Text to Your Photo</h2>
                                 <input type="text" id="text-input" placeholder="Add text here" onChange={(e) => setCustomTxt(e.target.value)} />
-                                {/* <input type="button" id="txt-btn" value="Add Text" onClick={grabText} /> */}
                             </fieldset>
                         </form>
                         <div className="stickerHolder">
@@ -297,23 +258,16 @@ function PhotoPage(props){
                 <div className="feedSection">
                     <Feeds draw={draw} />
                     <section className="buttonHolder">
-                        <button id="camButton" onClick={addPhoto}>Take a Picture!</button>
-                        <button id="resetButton">Clear Effects</button>
-                        <div id="submitHolder">
+                        <button id="camButton" onClick={takePhoto}>Take a Picture!</button>
                         <button id="submitImgButton" onClick={skillTest}>Submit Photo</button>
-                        </div>
-                    </section>
-                    <section className="stripHolder"> 
-                        <h2 className="photoBoothTitle">Select your chosen photo and click submit!</h2>
-                        <div className="strip"></div>
                     </section>
                 </div>
-                {/* <article className='modal' id="formCheck">
+                <article className='modal' id="formCheck">
                     <div className='modalContent'>
                         <p>You must complete the form to participate in the contest.</p>
                         <input type="button" value="Go To Form" onClick={goToForm} />
                     </div>
-                </article> */}
+                </article>
                 <article className='modal' id="skillQuestion">
                     <div className='modalContent'>
                         <p>Answer the Question to Continue</p>
