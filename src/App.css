@@ -378,6 +378,7 @@ li {
   width: 100%;
   display: grid;
   grid-template-columns: 340px 1fr;
+  grid-template-rows: max-content max-content;
   gap: 25px;
 }
 .photoPageContainer h2 {
@@ -544,7 +545,7 @@ fieldset.customText {
 .buttonHolder {
   display: flex;
 }
-.buttonHolder button {
+.buttonHolder button, #submitBtnHolder button {
   padding: 10px;
   font-size: 20px;
   cursor: pointer;

@@ -1,10 +1,7 @@
 import { useRef, useEffect } from 'react';
-// import usePhoto from './usePhoto';
 
 const useCanvas = (draw) => {
     const canvasRef = useRef(null);
-    // const videoRef = useRef(null);
-    // const videoRef = usePhoto()
 
     useEffect(()=>{
         const canvas = canvasRef.current;

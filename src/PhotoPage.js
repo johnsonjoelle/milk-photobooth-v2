@@ -157,22 +157,34 @@ function PhotoPage(props){
     }
 
     // Take Photo
-    let photoTaken = false;
+    const [photoTaken, setPhotoTaken] = useState(false);
+    const photoTakenFeed = () => {}
+    // let photoTaken = false;
     const shutterSound = document.querySelector('.shutter');
+    const [vid, setVid] = useState();
+    // const getVid = (data) => {
+    //     setVid(data);
+    // }
+
+    const takephoto = (ctx, vid) => {
+        const width = 800;
+        const height = 450;
+        ctx.drawImage(vid, 0, 0, width, height);
+    }
     const takePhoto = () => {
-        addPhoto();
+        // addPhoto();
         shutterSound.currentTime = 0;
         shutterSound.play();
         photoTaken = true;
     }
-    const addPhoto = () => {
+    const addPhoto = (ctx, vid) => {
         const width = 800;
         const height = 450;
         // Print current frame of video to canvas
         // let video = vid;
         //     ctx.canvas.width = width;
         //     ctx.canvas.height = height;
-        // CTX.drawImage(video, 0, 0, width, height);
+        // ctx.drawImage(vid, 0, 0, width, height);
         //     
         // }
     }
@@ -185,14 +197,15 @@ function PhotoPage(props){
         saveImg(data);
     }
 
+    
     // Skill Testing Question on Image submit
     const [skillAnswer, setSkillAnswer] = useState("");
     const [skillError, setSkillError] = useState("");
     function skillTest() {
-        if (photoTaken===true) {
+        // if (photoTaken===true) {
             savePhoto();
             document.getElementById('skillQuestion').style.display="block";
-        }
+        // }
     }
     function checkAnswer() {
         if (skillAnswer==="4") {
@@ -255,12 +268,9 @@ function PhotoPage(props){
                         </div>
                     </article>
                 </section>
-                <div className="feedSection">
-                    <Feeds draw={draw} />
-                    <section className="buttonHolder">
-                        <button id="camButton" onClick={takePhoto}>Take a Picture!</button>
-                        <button id="submitImgButton" onClick={skillTest}>Submit Photo</button>
-                    </section>
+                <Feeds draw={draw} />
+                <div id="submitBtnHolder">
+                    <button id="submitImgButton" onClick={skillTest}>Submit Photo</button>
                 </div>
                 <article className='modal' id="formCheck">
                     <div className='modalContent'>
